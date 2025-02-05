@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            margin: auto auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="balloon"></div>
+    
+    <script>
+        let clickCount = 0;
+        let size = 200;
+        const balloon = document.getElementById("balloon");
+
+        balloon.addEventListener("click", function() {
+            clickCount++;
+            size += 10;
+
+            balloon.style.width = size + "px";
+            balloon.style.height = size + "px";
+
+            if (clickCount === 1) {
+                balloon.style.backgroundColor = "green";
+            } else if (clickCount === 2) {
+                balloon.style.backgroundColor = "blue";
+            } else {
+                clickCount = 0;
+                balloon.style.backgroundColor = "red";
+            }
+
+            if(size >= 420){
+                size = 200;
+                balloon.style.width = size + "px";
+                balloon.style.height = size + "px";
+            }
+        });
+        balloon.addEventListener("mouseout", function() {
+            if(size > 200){
+                size -= 5;
+                balloon.style.width = size + "px";
+                balloon.style.height = size + "px";
+            }
+        });
+    </script>
+</body>
+</html>
