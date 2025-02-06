@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            margin: auto auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="balloon"></div>
+    
+    <script>
+        $(document).ready(function() {
+            let clickCount = 0;
+            let size = 200;
+            const colors = ["red", "green", "blue"];
+
+            $("#balloon").click(function() {
+                clickCount = (clickCount + 1) % 3; // Cycle 0 → 1 → 2 → 0
+                size = (size + 10);
+                if(size <= 420){
+                   $(this).css({
+                        "width": size + "px",
+                        "height": size + "px",
+                        "background-color": colors[clickCount]
+                    }); 
+                }
+                else{
+                    size = 200;
+                    $(this).css({"width": size + "px", "height": size + "px"});
+                }
+            });
+
+            $("#balloon").mouseout(function() {
+                if (size > 200) {
+                    size -= 5;
+                    $(this).css({"width": size + "px", "height": size + "px"});
+
+                    let currentColor = $(this).css("background-color");
+                    if (currentColor === "rgb(255, 0, 0)") {
+                        $(this).css("background-color", "blue");
+                    } else if (currentColor === "rgb(0, 128, 0)") {
+                        $(this).css("background-color", "red");
+                    } else {
+                        $(this).css("background-color", "green");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
