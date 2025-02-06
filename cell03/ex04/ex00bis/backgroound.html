@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Change</title>
+    <link rel="stylesheet" href="./background.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            text-align: left;
+            font-family: Arial, sans-serif;
+        }
+        #bt {
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <button id="bt" type="button">Click me!</button>
+    <script>
+        $(document).ready(function() {
+            let clickCount = 0;
+            $("#bt").click(function() {
+                let randomColor = `rgb(${Math.floor(Math.random() * 256)}, 
+                                      ${Math.floor(Math.random() * 256)}, 
+                                      ${Math.floor(Math.random() * 256)})`;
+                clickCount++;
+
+                if (clickCount === 1) {
+                    $(this).css({"font-size": "20px", "padding": "15px 30px"});
+                    $("body").css("background-color", randomColor);
+                } else if (clickCount === 2) {
+                    $(this).css({"font-size": "24px", "padding": "20px 40px"});
+                    $("body").css("background-color", randomColor);
+                } else {
+                    clickCount = 0;
+                    $(this).css({"font-size": "16px", "padding": "10px 20px"});
+                    $("body").css("background-color", randomColor);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
