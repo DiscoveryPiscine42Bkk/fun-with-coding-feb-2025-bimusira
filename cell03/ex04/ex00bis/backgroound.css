@@ -1,0 +1,9 @@
+body {
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+#myButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: all 0.5s;
+}
